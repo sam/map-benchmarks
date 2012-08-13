@@ -1,0 +1,36 @@
+h1. Hash vs Hazelcast vs Infinispan
+
+h2. Overview
+
+This is just a simple benchmark to compare Hazelcast and Infinispan performance (with defaults), and includes a regular Hash object as a baseline.
+
+h2. Usage
+
+From the root of the project run:
+
+bc. mvn clean install
+
+Then you can just start it up:
+
+bc. java -jar target/map-benchmarks-1.0.0.jar
+
+h2. Results:
+
+On a Core 2 Duo laptop running at 2.66GHz these are my results:
+
+bc.. Rehearsal --------------------------------------------------
+Hash:set         0.280000   0.010000   0.290000 (  0.223000)
+Hazelcast:set   34.890000   2.200000  37.090000 ( 36.979000)
+Infinispan:set   0.900000   0.030000   0.930000 (  0.628000)
+Hash:get         0.280000   0.010000   0.290000 (  0.176000)
+Hazelcast:get   31.400000   1.280000  32.680000 ( 32.997000)
+Infinispan:get   0.230000   0.010000   0.240000 (  0.147000)
+---------------------------------------- total: 71.520000sec
+
+                     user     system      total        real
+Hash:set         0.010000   0.000000   0.010000 (  0.011000)
+Hazelcast:set   60.140000   2.550000  62.690000 ( 63.818000)
+Infinispan:set   0.110000   0.010000   0.120000 (  0.098000)
+Hash:get         0.010000   0.000000   0.010000 (  0.007000)
+Hazelcast:get   30.130000   1.180000  31.310000 ( 31.637000)
+Infinispan:get   0.020000   0.000000   0.020000 (  0.018000)
