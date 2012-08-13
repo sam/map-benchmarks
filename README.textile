@@ -10,7 +10,7 @@ A persistent (to disk) Key/Value store with strong availability guarantees. Turn
 
 h4. Infinispan
 
-Intended to be a straight up cache, compatible with the MemCache API. It's data set is in memory, supports locality (Hazelcast's NearCache) and a more advanced eviction algorithm (LIRS; no idea how much this contributes to overall performance really). For the embedded instance in this benchmark it's only about half the speed of a JRuby Hash, which is very impressive. Infinispan requires nine JARs to run an embedded instance.
+Intended to be a straight up cache, compatible with the MemCache API. It's data set is in memory, supports locality (Hazelcast's NearCache) and a more advanced eviction algorithm (LIRS; no idea how much this contributes to overall performance really). For the embedded instance in this benchmark it's only about half the speed of a JRuby Hash, which is very impressive. Infinispan requires nine JARs to run an embedded instance, which is kind of the opposite of "impressive". Maven makes that a non-issue if you're deploying as a unified JAR, but if you intend to run as a more traditional file-based Ruby project you have to decide wether you feel like copying dependencies at deploy, or committing all those JARs to your repository.
 
 h3. Project Structure
 
