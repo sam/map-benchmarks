@@ -2,7 +2,11 @@ h1. Hash vs Hazelcast vs Infinispan
 
 h2. Overview
 
-This is just a simple benchmark to compare Hazelcast and Infinispan performance (with defaults), and includes a regular Hash object as a baseline.
+This is just a simple benchmark to compare "Hazelcast":http://www.hazelcast.com and "Infinispan":http://www.jboss.org/infinispan/ performance (with defaults), and includes a regular Hash object as a baseline.
+
+Hazelcast is a persistent (to disk) Key/Value store with strong availability guarantees. Turns out, it's not very fast relative to other popular Key/Value stores like Redis. At about 3.5ms for a key fetch over 10,000 keys, it's not exactly slow as that's moderately faster than you might expect for an RDBMS, but scaling appears linear so PostgreSQL (for example) would quickly (and probably drastically) overtake it if you got into the millions of keys. Hazelcast only requires a single JAR, which makes it very easy to get started with.
+
+Infinispan is intended to be a straight up cache, compatible with the MemCache API. It's data set is in memory, supports locality (Hazelcast's NearCache) and a more advanced eviction algorithm (LIRS; no idea how much this contributes to overall performance really). For the embedded instance in this benchmark it's only about half the speed of a JRuby Hash, which is very expensive. Infinispan requires nine JARs to run an embedded instance.
 
 h3. Project Structure
 
