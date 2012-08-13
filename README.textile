@@ -45,7 +45,7 @@ Then you can just start it up:
 
 bc. java -jar target/map-benchmarks-1.0.0.jar
 
-h2. Results:
+h2. Results
 
 On a Core 2 Duo laptop running at 2.66GHz these are my results:
 
