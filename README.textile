@@ -4,6 +4,29 @@ h2. Overview
 
 This is just a simple benchmark to compare Hazelcast and Infinispan performance (with defaults), and includes a regular Hash object as a baseline.
 
+h3. Project Structure
+
+As a JRuby example this demonstrates a few things:
+
+* We have dependency entries for Hazelcast and Infinispan in our pom.xml
+* The jruby-complete JAR is bundled in, so all you need is Java (and Maven)
+* src/main/ruby/jar-bootstrap.rb is present, so JRuby will automatically use it as the entry-point
+* When you package everything up into a unified JAR, you don't need to require separate JARs (it's kind of like unpacking a GEM into your project)
+* java_import will bring those classes into scope for convenient usage
+* Actually using these two different projects is trivial; once you've instantiated a Map/Hash, the interface is the same as a regular Ruby Hash
+
+h3. Notes on Serialization
+
+Infinispan seems to handle serializing "primitives", Arrays and Hashes just fine. Hazelcast throws errors serializing Ruby Hashes. They have to be converted to Java HashMaps by wrapping them like so:
+
+bc. cache['foo'] = java.util.HashMap.new({ 'bar' => 'baz' })
+
+Hazelcast also seems to have trouble serializing Ruby Arrays, at least when used as keys, so they have to be converted to Java Arrays first:
+
+bc. cache[ [1293624000000, "67bb5d5f2fddbea2bf24a29a5f00aa56"].to_java ] = "Some document..."
+
+Other than that, they seem about the same. I haven't tested either with serialized Ruby objects, but that's not my use-case anyway.
+
 h2. Usage
 
 From the root of the project run:
