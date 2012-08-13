@@ -6,11 +6,11 @@ This is just a simple benchmark to compare "Hazelcast":http://www.hazelcast.com 
 
 h4. Hazelcast
 
-A persistent (to disk) Key/Value store with strong availability guarantees. Turns out, it's not very fast relative to other popular Key/Value stores like Redis. At about 3.5ms for a key fetch over 10,000 keys, it's not exactly slow as that's moderately faster than you might expect for an RDBMS, but it's performance makes it the slowest K/V store I've tested so far. So if you value Durability, Consistency, and High Availability in an Embedded K/V store while still maintaining better-than-RDBMS performance, then Hazelcast might be what you're looking for. Hazelcast only requires a single JAR, which makes it very easy to get started with.
+A persistent (to disk) Key/Value store with strong availability guarantees. Turns out, it's not very fast relative to other popular Key/Value stores like Redis. At about 3.5ms for a key fetch over 10,000 keys, it's not exactly slow as that's moderately faster than you might expect for an RDBMS, but it's performance makes it the slowest K/V store I've tested so far. So if you value Durability, Consistency, and High Availability in an Embedded K/V store while still maintaining better-than-RDBMS performance, then Hazelcast might be what you're looking for. It's worth mentioning that Hazelcast should also scale horizontally very well. Hazelcast only requires a single JAR, which makes it very easy to get started with.
 
 h4. Infinispan
 
-Intended to be a straight up cache, compatible with the MemCache API. It's data set is in memory, supports locality (Hazelcast's NearCache) and a more advanced eviction algorithm (LIRS; no idea how much this contributes to overall performance really). For the embedded instance in this benchmark it's only about half the speed of a JRuby Hash, which is very expensive. Infinispan requires nine JARs to run an embedded instance.
+Intended to be a straight up cache, compatible with the MemCache API. It's data set is in memory, supports locality (Hazelcast's NearCache) and a more advanced eviction algorithm (LIRS; no idea how much this contributes to overall performance really). For the embedded instance in this benchmark it's only about half the speed of a JRuby Hash, which is very impressive. Infinispan requires nine JARs to run an embedded instance.
 
 h3. Project Structure
 
